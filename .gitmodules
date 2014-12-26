@@ -1,0 +1,3 @@
+[submodule "Reader"]
+	path = Reader
+	url = git@github.com:kcome/Reader.git
