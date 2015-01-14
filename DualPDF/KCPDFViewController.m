@@ -25,6 +25,7 @@
 
 @import MobileCoreServices;
 
+#import "common.h"
 #import "KCPDFViewController.h"
 
 @interface KCPDFViewController () {
@@ -56,7 +57,10 @@
 #else
     UIDocumentMenuViewController *docMenu = [[UIDocumentMenuViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypePDF] inMode:UIDocumentPickerModeImport];
     docMenu.delegate = self;
-    [self showViewController:docMenu sender:self];
+    if (!IS_PHONE) {
+        docMenu.popoverPresentationController.sourceView = sender;
+    }
+    [self presentViewController:docMenu animated:YES completion:nil];
 #endif
 }
 
